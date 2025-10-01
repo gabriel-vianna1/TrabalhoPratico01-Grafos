@@ -26,4 +26,11 @@ public class Aresta {
     public int hashCode() {
         return Objects.hash(u, v);
     }
+
+    @Override
+    public String toString() {
+        // Você pode formatar como quiser. Parênteses são comuns.
+        return "(" + u + ", " + v + ")";
+    }
+
 }
