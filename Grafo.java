@@ -3,7 +3,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 
 public class Grafo {
@@ -65,6 +67,51 @@ public class Grafo {
         }
     }
     return new ArrayList<>(arestasSet);
+}
+
+public boolean isConexo() {
+    // Grafo com 0 ou 1 vértice é considerado conexo por definição.
+    if (numVertices <= 1) {
+        return true;
+    }
+
+    Set<Integer> visitados = new HashSet<>();
+    Queue<Integer> fila = new LinkedList<>();
+
+    int verticeInicial = -1;
+    for (int i = 1; i <= numVertices; i++) {
+        if (!listaAdjacencia.get(i).isEmpty()) {
+            verticeInicial = i;
+            break;
+        }
+    }
+
+    // Se não há nenhuma aresta no grafo, ele é (tecnicamente) conexo.
+    if (verticeInicial == -1) {
+        return true;
+    }
+
+    // Inicia a busca (BFS)
+    fila.add(verticeInicial);
+    visitados.add(verticeInicial);
+
+    while (!fila.isEmpty()) {
+        int verticeAtual = fila.poll();
+
+        for (int vizinho : getVizinhos(verticeAtual)) {
+            if (!visitados.contains(vizinho)) {
+                visitados.add(vizinho);
+                fila.add(vizinho);
+            }
+        }
+    }
+
+    for (int i = 1; i <= numVertices; i++) {
+        if (!listaAdjacencia.get(i).isEmpty() && !visitados.contains(i)) {
+            return false;
+        }
+    }
+    return true;
 }
 
     public static Grafo carregarDeArquivo(String path) throws IOException {
