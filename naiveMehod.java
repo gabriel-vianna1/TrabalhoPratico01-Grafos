@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class naiveMehod {
+public class NaiveMehod {
 
-    public static void acharPontes(Grafo grafo){
+    public static List<Aresta> acharPontes(Grafo grafo){
 
     List<Aresta> arestas = grafo.getArestas();
     List<Aresta> pontes = new ArrayList<>(); 
@@ -13,7 +13,7 @@ public class naiveMehod {
     if(!isConexo){
         System.out.println("Grafo desconexo");
         //Se o grafo já é desconexo, não tem necessidade de procurar por pontes.
-        return;
+        return pontes;
     }
 
     for(Aresta a: arestas){
@@ -28,13 +28,8 @@ public class naiveMehod {
         grafo.adicionarAresta(a.u, a.v);
          
     }
-  
-    if(pontes.isEmpty()){
-        System.out.println("Não existem pontes no grafo");
-    }
-    else{
-        System.out.println("As seguintes arestas são pontes: "+ pontes);
-    }
+    //Vai retornar as arestas ponte, se a lista estiver vazia,significa que não existem pontes no grafo  
+    return pontes;
 
     }
     
