@@ -3,9 +3,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Esta classe foi ADAPTADA para funcionar com a sua classe Grafo.
- * Ela agora trabalha com vértices indexados de 1 a N.
+ * Nossa implementação foi adaptada da seguitne fonte
+ * https://www.finalroundai.com/articles/finding-bridges-in-graph
  */
+
 public class TarjanBridgeAlgorithm {
 
     private final Grafo grafo;
