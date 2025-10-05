@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class NaiveMehod {
+public class NaiveMehod implements BuscadorDePontes {
 
-    public static List<Aresta> acharPontes(Grafo grafo){
+    @Override
+    public  List<Aresta> findPontes(Grafo grafo){
 
     List<Aresta> arestas = grafo.getArestas();
     List<Aresta> pontes = new ArrayList<>(); 

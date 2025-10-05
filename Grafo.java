@@ -45,6 +45,10 @@ public class Grafo {
         return this.listaAdjacencia.get(vertice).size();
     }
 
+    public int getNumArestas(){
+        return this.numArestas;
+    }
+
     public ArrayList<Integer> getVizinhos(int vertice) {
         return this.listaAdjacencia.get(vertice);
     }
@@ -143,6 +147,22 @@ public boolean isConexo() {
 
         return grafo;
     }
+}
+
+//Método para copiar um grafo, será usado na classe de Fleury
+public Grafo copiar() {
+    Grafo copia = new Grafo(this.numVertices);
+
+    copia.setNumArestas(this.numArestas);
+
+    for (int i = 1; i <= this.numVertices; i++) {
+        ArrayList<Integer> vizinhosOriginais = this.listaAdjacencia.get(i);
+
+        ArrayList<Integer> novosVizinhos = new ArrayList<>(vizinhosOriginais);
+
+        copia.listaAdjacencia.get(i).addAll(novosVizinhos);
+    }
+    return copia;
 }
 
 }
