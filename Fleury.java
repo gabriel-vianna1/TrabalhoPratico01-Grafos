@@ -3,8 +3,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/*
+ * Fonte que usamos como inspiração para a implementação
+ * https://www.geeksforgeeks.org/dsa/fleurys-algorithm-for-printing-eulerian-path/
+ */
+
+
 public class Fleury {
     public static List<Integer> FleuryAlgorthm(Grafo grafo, BuscadorDePontes buscador){
+
+        long inicio = System.nanoTime();
+
          int comeco = 1; // Se houver alguma vértice de grau ímpar começar por ele, se não começar por 1.
          int contadorImpares = 0;
          List<Integer> verticesGrauImpar = new ArrayList<>();
@@ -21,15 +30,15 @@ public class Fleury {
          }
 
          if(contadorImpares > 2 || !grafo.isConexo()){
-            System.out.println("Grafo com " + contadorImpares + "vértices de grau ímpar ou desconexos são Não-Eulerianos");
+            System.out.println("Tipo: Não-Euleriano");
             return caminho; // Retornará um caminho vazio --- Vamos verificar na main.
         }
         else if(contadorImpares == 2){
             comeco = verticesGrauImpar.get(0);
-            System.out.println("Grafo Semi-Euleriano");
+            System.out.println("Tipo : Grafo Semi-Euleriano");
         }
         else if(contadorImpares == 0){
-            System.out.println("Grafo Euleriano");
+            System.out.println("Tipo : Grafo Euleriano");
         }
 
         caminho.add(comeco);
@@ -68,7 +77,14 @@ public class Fleury {
         caminho.add(proximoVertice);
         copia.removerAresta(verticeAtual, proximoVertice);   
             }
+
+            long fim = System.nanoTime();
+
+            double duracaoMs = (fim - inicio) / 1_000_000.0;
+            
+            System.out.println("Tempo de execução: " + duracaoMs + "ms");
+
             return caminho;
     }
-
+   
 }
