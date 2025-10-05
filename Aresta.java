@@ -12,8 +12,7 @@ public class Aresta {
         this.v = Math.max(u, v);
     }
 
-    // Métodos 'hashCode' e 'equals' são ESSENCIAIS para o HashSet funcionar
-    // Eles definem o que significa para duas arestas serem "iguais"
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -29,7 +28,6 @@ public class Aresta {
 
     @Override
     public String toString() {
-        // Você pode formatar como quiser. Parênteses são comuns.
         return "(" + u + ", " + v + ")";
     }
 

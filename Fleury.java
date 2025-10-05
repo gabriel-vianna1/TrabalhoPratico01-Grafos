@@ -30,8 +30,7 @@ public class Fleury {
          }
 
          if(contadorImpares > 2 || !grafo.isConexo()){
-            System.out.println("Tipo: Não-Euleriano");
-            return caminho; // Retornará um caminho vazio --- Vamos verificar na main.
+            return caminho; 
         }
         else if(contadorImpares == 2){
             comeco = verticesGrauImpar.get(0);
@@ -44,15 +43,17 @@ public class Fleury {
         caminho.add(comeco);
 
         while(copia.getNumArestas() > 0){
-
+           
             int verticeAtual = caminho.getLast();
             int proximoVertice = -1; //Valor inválido somenta para indicar "vazio"
             List<Integer> vizinhos = copia.getVizinhos(verticeAtual);
 
+
+
             if(copia.getGrau(verticeAtual) > 1){
                 List<Aresta> pontes = buscador.findPontes(copia);
                 Set<Aresta> pontesSet = new HashSet<>(pontes);
-
+        
                 for(int i = 0; i < vizinhos.size(); i++){
                     int candidato = vizinhos.get(i);
                     Aresta arestaCandidata = new Aresta(verticeAtual, candidato);

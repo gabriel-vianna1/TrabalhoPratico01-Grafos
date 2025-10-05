@@ -28,6 +28,8 @@ public class Grafo {
         this.listaAdjacencia.get(u).add(v);
         // Adiciona u à lista de vizinhos de v
         this.listaAdjacencia.get(v).add(u);
+
+        this.numArestas++;
     }
 
     public void removerAresta(int u, int v) {
@@ -57,7 +59,7 @@ public class Grafo {
         return this.numVertices;
     }
 
-     private void setNumArestas(int numArestas) {
+     public void setNumArestas(int numArestas) {
         this.numArestas = numArestas;
     }
 
