@@ -1,4 +1,6 @@
-// Pode ser um novo arquivo Aresta.java ou no mesmo arquivo que o Grafo
+package codigos;
+
+
 import java.util.Objects;
 
 public class Aresta {

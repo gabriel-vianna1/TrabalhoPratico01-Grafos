@@ -1,3 +1,5 @@
+package codigos;
+
 import java.util.List;
 
 public interface BuscadorDePontes {

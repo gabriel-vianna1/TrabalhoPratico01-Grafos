@@ -1,15 +1,10 @@
+package codigos;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Esta classe é uma "fábrica" de grafos.
- * Ela cria grafos com propriedades específicas (simples, Euleriano, etc.),
- * precisando apenas do número de vértices como entrada.
- * Ela faz escolhas inteligentes e aleatórias sobre o número e a disposição
- * das arestas para cumprir os requisitos.
- */
+
 public class FabricaDeGrafos {
 
     private static final Random random = new Random();
