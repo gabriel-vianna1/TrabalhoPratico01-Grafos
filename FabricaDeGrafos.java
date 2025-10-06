@@ -49,38 +49,25 @@ public class FabricaDeGrafos {
                 continue;
             }
 
-            // --- INÍCIO DA CORREÇÃO FINAL ---
-// Verifica se NENHUMA das três arestas do triângulo já existe
+    
 boolean arestaUV_existe = g.getVizinhos(u).contains(v);
 boolean arestaVW_existe = g.getVizinhos(v).contains(w);
 boolean arestaWU_existe = g.getVizinhos(w).contains(u);
 
-// Só adiciona o triângulo se o grafo puder permanecer simples (sem arestas paralelas)
+
 if (!arestaUV_existe && !arestaVW_existe && !arestaWU_existe) {
     g.adicionarAresta(u, v);
     g.adicionarAresta(v, w);
     g.adicionarAresta(w, u);
 }
-// --- FIM DA CORREÇÃO FINAL ---
-            // --- FIM DA CORREÇÃO ---
+
         }
-        // Linha removida pois adicionarAresta já deve controlar o contador de arestas
+        
         return g;
     }
 
-    /**
-     * NOVO MÉTODO
-     * Cria um Grafo que GARANTIDAMENTE é Semi-Euleriano.
-     * Um grafo é semi-Euleriano se for conexo e tiver exatamente dois vértices de grau ímpar.
-     *
-     * Estratégia:
-     * 1. Cria um grafo Euleriano (conexo, todos os graus pares).
-     * 2. Adiciona uma única aresta entre dois vértices que não eram vizinhos.
-     * Isso transforma seus graus pares em ímpares, resultando em exatamente 2 vértices de grau ímpar.
-     *
-     * @param V O número de vértices (deve ser >= 2).
-     * @return Um Grafo Semi-Euleriano.
-     */
+    
+    
     public static Grafo criarGrafoSemiEuleriano(int V) {
         if (V < 2) {
             // Não é possível ter 2 vértices de grau ímpar com menos de 2 vértices.
@@ -108,18 +95,11 @@ if (!arestaUV_existe && !arestaVW_existe && !arestaWU_existe) {
             }
         }
 
-        // Caso de fallback: se o grafo Euleriano for completo (raro, mas possível),
-        // não podemos adicionar mais arestas. Nesse caso, retornamos um caminho simples,
-        // que é o exemplo mais fundamental de um grafo semi-Euleriano.
+        
         return GeradorDeGrafos.caminho(V);
     }
 
-    /**
-     * Cria um Grafo que GARANTIDAMENTE NÃO é Euleriano.
-     *
-     * @param V O número de vértices.
-     * @return Um Grafo Não-Euleriano.
-     */
+   
     public static Grafo criarGrafoNaoEuleriano(int V) {
         if (V <= 1) {
             return new Grafo(V);
